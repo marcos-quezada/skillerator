@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "cb983a04-8a1f-4ca9-a985-ede5e5ba5ae7",
+		"name": "Visa Right",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Elegibility query",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query standaloneEligibilityResult($values: StandaloneEligibilityInput!) {\nstandaloneEligibilityResult(values: $values) {\n  fieldOfWork\n  degreeFieldOfWorks\n  isEducationMatched\n  isScarceProfession\n  isScarceProfessionByDegree\n  visaSubtype\n}\n}",
+						"variables": "{\n\"values\":{\n\t\"applicantType\": \"employee\",\n\t\"fieldOfWorkId\":74,\n\t\"hasJobContract\": true,\n\t\"hasNoDegree\":true,\n\t\"universityCountry\":null,\n\t\"degreeCompletionId\":null,\n\t\"degreeId\":null,\n\t\"isDegreeNotFound\":null,\n\t\"isUniversityNotFound\":null,\n\t\"universityId\":null,\n\t\"universityPlaceId\":null,\n\t\"salary\":\"43056\",\n\t\"workExperienceYears\":2\n} \n}"
+					}
+				},
+				"url": {
+					"raw": "https://api.visaright.eu/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"visaright",
+						"eu"
+					],
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "This is an example of the data needed to ask if an application is elegible for visa."
+			},
+			"response": []
+		},
+		{
+			"name": "Fields for elegibility",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n  __type(name: \"StandaloneEligibility\") {\n    name\n    fields {\n      name\n      type {\n        name\n        kind\n        ofType {\n          name\n          kind\n        }\n      }\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.visaright.eu/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"visaright",
+						"eu"
+					],
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "This sample request is the guide for the fields needed to check elegibility."
+			},
+			"response": []
+		},
+		{
+			"name": "Introspection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\n  __schema {\n    types {\n      name\n      description\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.visaright.eu/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"visaright",
+						"eu"
+					],
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "This request serves as guide to the entities existing on the system."
+			},
+			"response": []
+		},
+		{
+			"name": "Anabin places",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\nanabinPlaces(countryCode: \"IT\") {\n    englishName\n    id\n    __typename\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://api.visaright.eu/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"visaright",
+						"eu"
+					],
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Sample query to get the cities for each country on Anabin, refer to constants."
+			},
+			"response": []
+		},
+		{
+			"name": "Parametrized Anabi places",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query anabinPlaces($countryCode: String!){\nanabinPlaces(countryCode:$countryCode){\n    englishName\n    id\n    __typename    \n    }\n}",
+						"variables": "{\"countryCode\":\"IT\"}"
+					},
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.visaright.eu/graphql",
+					"protocol": "https",
+					"host": [
+						"api",
+						"visaright",
+						"eu"
+					],
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Sample request as created on visa right website."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f7030689-076f-46ba-85ed-107cf4618437",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8d2b8b0e-f9b6-4227-a845-a6e176951fa1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

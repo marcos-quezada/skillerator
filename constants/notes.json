@@ -1,0 +1,38 @@
+// This file contains some notes and examples of how fields are getting updated during the process.
+
+query standaloneEligibilityResult($values: StandaloneEligibilityInput!) {
+    standaloneEligibilityResult(values: $values) {
+      fieldOfWork
+      degreeFieldOfWorks
+      isEducationMatched
+      isScarceProfession
+      isScarceProfessionByDegree
+      isSpecializationMatched
+      visaSubtype
+    }
+  }
+
+  {
+	"values":{
+		"applicantType": "employee",
+		"fieldOfWorkId":212,
+		"hasJobContract": true
+	}
+}
+
+"values":{"nationality":"BR","residenceCountry":"BR","universityCountry":"BR"}}
+"values":{"fieldOfWorkId":74} // Electrical and electronic trade workers
+"values":{"salary":"50000"}
+"values":{"hasNoDegree":true,"universityCountry":null,"degreeCompletionId":null,"degreeId":null,"isDegreeNotFound":null,"isUniversityNotFound":null,"universityId":null,"universityPlaceId":null}  // Doesn't have a university degree
+"values":{"universityPlaceId":"8724"} // Sao Paolo
+"values":{"isUniversityNotFound":true,"universityId":null} // University not found
+{"operationName":"anabinUniversityDetails","variables":{"skip":false,"universityId":"26487-Centro Federal de Educação Tecnológica de São Paulo"},"query":"query anabinUniversityDetails($universityId: String!, $skip: Boolean!) {\n  anabinUniversityDetails(universityId: $universityId) @skip(if: $skip) {\n    id\n    name\n    status\n    __typename\n  }\n}\n"} // Query for Universities
+"values":{"universityId":"26487-Centro Federal de Educação Tecnológica de São Paulo"}
+{"operationName":"anabinDegrees","variables":{"countryCode":"BR","degreeCompletionId":"","first":40,"searchString":"","skip":false},"query":"query anabinDegrees($after: String, $first: Int, $countryCode: String, $degreeCompletionId: String, $searchString: String, $skip: Boolean!) {\n  anabinDegrees(after: $after, first: $first, degreeCompletionId: $degreeCompletionId, countryCode: $countryCode, searchString: $searchString) @skip(if: $skip) {\n    pageInfo {\n      count\n      endCursor\n      hasNextPage\n      startCursor\n      __typename\n    }\n    edges {\n      node {\n        completionType\n        countryCode\n        degreeClass\n        id\n        maxDuration\n        minDuration\n        name\n        study\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"} // Query anabin degrees
+"values":{"isDegreeNotFound":true,"degreeId":null} // Degree not found
+"operationName":"anabinDegrees","variables":{"countryCode":"BR","degreeCompletionId":"1121","first":40,"searchString":"","skip":false},"query":"query anabinDegrees($after: String, $first: Int, $countryCode: String, $degreeCompletionId: String, $searchString: String, $skip: Boolean!) {\n  anabinDegrees(after: $after, first: $first, degreeCompletionId: $degreeCompletionId, countryCode: $countryCode, searchString: $searchString) @skip(if: $skip) {\n    pageInfo {\n      count\n      endCursor\n      hasNextPage\n      startCursor\n      __typename\n    }\n    edges {\n      node {\n        completionType\n        countryCode\n        degreeClass\n        id\n        maxDuration\n        minDuration\n        name\n        study\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}\n"}
+"values":{"degreeCompletionId":"1121"} // Licenciado
+{"operationName":"anabinDegree","variables":{"degreeId":"11327","skip":false},"query":"query anabinDegree($degreeId: String!, $skip: Boolean!) {\n  anabinDegree(degreeId: $degreeId) @skip(if: $skip) {\n    correspondingEquivalent\n    equivalent\n    germanSpecializationName\n    id\n    name\n    specializationName\n    __typename\n  }\n}\n"}
+"values":{"degreeId":"11327"}
+"values":{"workExperienceYears":5}
+
